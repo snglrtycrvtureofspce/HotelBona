@@ -1,0 +1,78 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="KingWilliamHotelDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="tblGuests">
+    <Key>
+      <PropertyRef Name="GuestID" />
+    </Key>
+    <Property Name="GuestID" Type="String" MaxLength="6" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="GuestAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="PostalCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="EmailAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="tblReservations" Relationship="Self.FK__tblReserv__Guest__20C1E124" FromRole="tblGuests" ToRole="tblReservations" />
+  </EntityType>
+  <EntityType Name="tblReservations">
+    <Key>
+      <PropertyRef Name="ReservationID" />
+    </Key>
+    <Property Name="ReservationID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="GuestID" Type="String" MaxLength="6" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="RoomID" Type="String" MaxLength="4" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="EmployeeID" Type="String" MaxLength="6" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="DateMade" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="ReservationStartDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="ReservationEndDate" Type="DateTime" Nullable="false" Precision="0" />
+    <NavigationProperty Name="tblGuests" Relationship="Self.FK__tblReserv__Guest__20C1E124" FromRole="tblReservations" ToRole="tblGuests" />
+    <NavigationProperty Name="tblRooms" Relationship="Self.FK__tblReserv__RoomI__21B6055D" FromRole="tblReservations" ToRole="tblRooms" />
+  </EntityType>
+  <EntityType Name="tblRooms">
+    <Key>
+      <PropertyRef Name="RoomID" />
+    </Key>
+    <Property Name="RoomID" Type="String" MaxLength="4" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="RoomTypeID" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="StatusID" Type="Int32" Nullable="false" />
+    <Property Name="Cost" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+    <Property Name="RoomFloor" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="tblReservations" Relationship="Self.FK__tblReserv__RoomI__21B6055D" FromRole="tblRooms" ToRole="tblReservations" />
+  </EntityType>
+  <Association Name="FK__tblReserv__Guest__20C1E124">
+    <End Role="tblGuests" Type="Self.tblGuests" Multiplicity="1" />
+    <End Role="tblReservations" Type="Self.tblReservations" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblGuests">
+        <PropertyRef Name="GuestID" />
+      </Principal>
+      <Dependent Role="tblReservations">
+        <PropertyRef Name="GuestID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__tblReserv__RoomI__21B6055D">
+    <End Role="tblRooms" Type="Self.tblRooms" Multiplicity="1" />
+    <End Role="tblReservations" Type="Self.tblReservations" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblRooms">
+        <PropertyRef Name="RoomID" />
+      </Principal>
+      <Dependent Role="tblReservations">
+        <PropertyRef Name="RoomID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="KingWilliamHotelDBEntities3" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="tblGuests" EntityType="Self.tblGuests" />
+    <EntitySet Name="tblReservations" EntityType="Self.tblReservations" />
+    <EntitySet Name="tblRooms" EntityType="Self.tblRooms" />
+    <AssociationSet Name="FK__tblReserv__Guest__20C1E124" Association="Self.FK__tblReserv__Guest__20C1E124">
+      <End Role="tblGuests" EntitySet="tblGuests" />
+      <End Role="tblReservations" EntitySet="tblReservations" />
+    </AssociationSet>
+    <AssociationSet Name="FK__tblReserv__RoomI__21B6055D" Association="Self.FK__tblReserv__RoomI__21B6055D">
+      <End Role="tblRooms" EntitySet="tblRooms" />
+      <End Role="tblReservations" EntitySet="tblReservations" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

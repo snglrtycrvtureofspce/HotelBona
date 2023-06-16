@@ -1,0 +1,65 @@
+﻿<Window x:Class="KingWilliam.Guestt"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:KingWilliam"
+        mc:Ignorable="d"
+        Loaded="Window_Loaded"
+        Title="Guestt" Height="450" Width="800">
+
+    <Grid>
+        <Grid Background="WhiteSmoke">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="247*"/>
+                <ColumnDefinition Width="153*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="60"/>
+                <RowDefinition/>
+                <RowDefinition Height="60"/>
+            </Grid.RowDefinitions>
+
+            <StackPanel Orientation="Horizontal"
+                        VerticalAlignment="Center"
+                        HorizontalAlignment="Center">
+                <TextBlock Text="Найти: "
+                           FontSize="16" ></TextBlock>
+                <TextBox Width="100"
+                         FontSize="16"
+                         Name="Poisk"
+                         TextChanged="Poisk_TextChanged"
+                         ></TextBox>
+
+            </StackPanel>
+
+
+            <DataGrid Grid.Row="1"
+                      AutoGenerateColumns="False"
+                      x:Name="GuestGrid"
+                      Grid.ColumnSpan="2">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Гость" Width="*" Binding="{Binding GuestID}"/>
+                    <DataGridTextColumn Header="Имя" Width="*" Binding="{Binding FirstName}"/>
+                    <DataGridTextColumn Header="Фамилия" Width="*" Binding="{Binding LastName}"/>
+                    <DataGridTextColumn Header="НомерПаспорта" Width="*" Binding="{Binding GuestAddress}"/>
+                    <DataGridTextColumn Header="Пол" Width="*" Binding="{Binding PostalCode}"/>
+                    <DataGridTextColumn Header="Номер телефона" Width="*" Binding="{Binding Phone}"/>
+                    <DataGridTextColumn Header="E-mail адрес" Width="*" Binding="{Binding EmailAddress}"/>
+                </DataGrid.Columns>
+            </DataGrid>
+
+
+            <Button Content="Добавить" HorizontalAlignment="Left" Margin="20,0,0,0" Grid.Row="2" VerticalAlignment="Center" Height="20" Width="130" Click="Button_Click"/>
+            <Button Content="Изменить" HorizontalAlignment="Left" Margin="300,0,0,0" Grid.Row="2" VerticalAlignment="Center" Height="20" Width="130" Click="Button_Click_2"/>
+            <Button Content="Обновить" HorizontalAlignment="Left" Margin="165,0,0,0" Grid.Row="2" VerticalAlignment="Center" Click="Button_Click_1" Width="120"/>
+            <Button Content="На главную" HorizontalAlignment="Left" Margin="444,0,0,0" Grid.Row="2" VerticalAlignment="Center" Height="20" Width="130" Grid.ColumnSpan="2" Click="Button_Click_3"/>
+            <CheckBox Content="Мужской" HorizontalAlignment="Left" Margin="431,0,0,0" VerticalAlignment="Center" Unchecked="CheckBox_Unchecked" Checked="CheckBox_Checked" Grid.ColumnSpan="2" Width="78"/>
+            <CheckBox Grid.Column="1" Content="Женский" HorizontalAlignment="Left" Margin="40,0,0,0" VerticalAlignment="Center" Unchecked="CheckBox_Unchecked_1" Checked="CheckBox_Checked_1"/>
+            <Button Content="Отчет о топ-гостях" HorizontalAlignment="Left" Margin="104,0,0,0" Grid.Row="2" VerticalAlignment="Center" Height="20" Width="130" Click="Button_Click_4" Grid.Column="1"/>
+
+
+
+        </Grid>
+    </Grid>
+</Window>

@@ -1,0 +1,51 @@
+﻿<Window x:Class="KingWilliam.RoomPricing"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:KingWilliam"
+        mc:Ignorable="d"
+        Title="RoomPricing" Height="834" Width="1345.593" ResizeMode="CanMinimize" WindowState="Normal">
+    <Grid Margin="0,0,0,64">
+        <Border BorderThickness="0 0 0 1" BorderBrush="#FF3556C8"  HorizontalAlignment="Left" Height="119" VerticalAlignment="Top" Width="1534" Grid.ColumnSpan="3">
+            <Image x:Name="image" Source="/logo_site.png" RenderTransformOrigin="-0.491,-0.017" Margin="209,-68,1052,-47" />
+        </Border>
+        <Border BorderThickness="0 0 0 1" BorderBrush="#FF3556C8"  HorizontalAlignment="Left" Height="119" VerticalAlignment="Top" Width="1534">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center"/>
+        </Border>
+        <Label x:Name="lblPricingTitle" Content="Прайс-лист всех услуг отеля" HorizontalAlignment="Left" Margin="198,141,0,0" VerticalAlignment="Top" FontSize="48" FontWeight="Bold" FontFamily="Calibri"/>
+        <Label x:Name="label1" Content="Выберите тип номера:" HorizontalAlignment="Left" Margin="157,579,0,0" VerticalAlignment="Top" FontSize="24"/>
+        <ComboBox x:Name="cmbRoomType" HorizontalAlignment="Left" Margin="434,579,0,0" VerticalAlignment="Top" Width="209" Height="42" SelectionChanged="cmbRoomType_SelectionChanged"/>
+
+        <Canvas Margin="434,651,552,-61" Name="cnvPricing">
+            <Button x:Name="btnCancel" Content="Назад" HorizontalAlignment="Left" VerticalAlignment="Center" Width="212" Height="55" Background="#4682B4" FontSize="18" Foreground="#FFF1F1F1" Canvas.Top="96" Click="btnCancel_Click"/>
+            <Label x:Name="lblPrice" Content="Цена за ночь:" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="24" Canvas.Left="-277" Canvas.Top="-9"/>
+            <TextBox x:Name="txtPrice" Height="32" Canvas.Left="5" TextWrapping="Wrap" Text="" Canvas.Top="5" Width="202" FontSize="16" TextChanged="txtPrice_TextChanged" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+
+
+        </Canvas>
+        <Canvas Margin="451,426,536.2,407.2" Name="cnvRoomNumber" Visibility="Collapsed">
+            <Label x:Name="lblRoomNumber" Content="Room Number:" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="24"/>
+            <ComboBox x:Name="cmbRoomNumber" HorizontalAlignment="Left" VerticalAlignment="Top" Width="209" Height="42" Canvas.Left="343" SelectionChanged="cmbRoomNumber_SelectionChanged"/>
+
+
+        </Canvas>
+        <ComboBox x:Name="cmbService" HorizontalAlignment="Left" Margin="1048,584,0,0" VerticalAlignment="Top" Width="143" SelectionChanged="cmbService_SelectionChanged" Height="37" RenderTransformOrigin="0.726,0.65"/>
+        <TextBox x:Name="txtAmount" HorizontalAlignment="Left" Margin="1027,646,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="162" Height="32
+                 "/>
+        <Label Content="Прайс-лист на номера" HorizontalAlignment="Left" Margin="232,244,0,0" VerticalAlignment="Top" FontSize="32"/>
+        <Label Content="Прайс-лист на доп.услуги отеля" HorizontalAlignment="Left" Margin="777,248,0,0" VerticalAlignment="Top" FontSize="32"/>
+        <Label Content="Выберите услугу:" HorizontalAlignment="Left" Height="45" Margin="827,576,0,0" VerticalAlignment="Top" Width="195" FontSize="24"/>
+        <Label Content="Цена:" HorizontalAlignment="Left" Margin="831,634,0,0" VerticalAlignment="Top" FontSize="24" RenderTransformOrigin="0.533,-0.028"/>
+        <Label Content="Luxe - 200 руб. за ночь" HorizontalAlignment="Left" Margin="251,325,0,0" VerticalAlignment="Top" FontSize="26"/>
+        <Label Content="Double - 150 руб. за ночь" HorizontalAlignment="Left" Margin="251,375,0,0" VerticalAlignment="Top" FontSize="26"/>
+        <Label Content="Ordinary - 100 руб. за ночь" HorizontalAlignment="Left" Margin="251,424,0,0" VerticalAlignment="Top" FontSize="26"/>
+        <Label Content="Личный телефон - 10 руб." HorizontalAlignment="Left" Margin="802,325,0,0" VerticalAlignment="Top" FontSize="26"/>
+        <Label Content="Мини-бар - 50 руб." HorizontalAlignment="Left" Margin="802,375,0,0" VerticalAlignment="Top" FontSize="26"/>
+        <Label Content="Уборка - 20 руб." HorizontalAlignment="Left" Margin="802,424,0,0" VerticalAlignment="Top" FontSize="26"/>
+        <Label Content="Полное обслуживание номера - 30 руб." HorizontalAlignment="Left" Margin="802,474,0,0" VerticalAlignment="Top" FontSize="26"/>
+        <Rectangle HorizontalAlignment="Left" Height="1" Margin="157,538,0,0" Stroke="Black" VerticalAlignment="Top" Width="1133"/>
+
+
+    </Grid>
+</Window>

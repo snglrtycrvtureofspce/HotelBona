@@ -1,0 +1,74 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Хранилище KingWilliamHotelDBModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="tblGuests">
+    <Key>
+      <PropertyRef Name="GuestID" />
+    </Key>
+    <Property Name="GuestID" Type="varchar" MaxLength="6" Nullable="false" />
+    <Property Name="FirstName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="LastName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="GuestAddress" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="PostalCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Phone" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="EmailAddress" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tblReservations">
+    <Key>
+      <PropertyRef Name="ReservationID" />
+    </Key>
+    <Property Name="ReservationID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="GuestID" Type="varchar" MaxLength="6" Nullable="false" />
+    <Property Name="RoomID" Type="varchar" MaxLength="4" Nullable="false" />
+    <Property Name="EmployeeID" Type="varchar" MaxLength="6" Nullable="false" />
+    <Property Name="DateMade" Type="date" Nullable="false" />
+    <Property Name="ReservationStartDate" Type="date" Nullable="false" />
+    <Property Name="ReservationEndDate" Type="date" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tblRooms">
+    <Key>
+      <PropertyRef Name="RoomID" />
+    </Key>
+    <Property Name="RoomID" Type="varchar" MaxLength="4" Nullable="false" />
+    <Property Name="RoomTypeID" Type="varchar" MaxLength="1" Nullable="false" />
+    <Property Name="StatusID" Type="int" Nullable="false" />
+    <Property Name="Cost" Type="money" Nullable="false" />
+    <Property Name="RoomFloor" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="FK__tblReserv__Guest__20C1E124">
+    <End Role="tblGuests" Type="Self.tblGuests" Multiplicity="1" />
+    <End Role="tblReservations" Type="Self.tblReservations" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblGuests">
+        <PropertyRef Name="GuestID" />
+      </Principal>
+      <Dependent Role="tblReservations">
+        <PropertyRef Name="GuestID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__tblReserv__RoomI__21B6055D">
+    <End Role="tblRooms" Type="Self.tblRooms" Multiplicity="1" />
+    <End Role="tblReservations" Type="Self.tblReservations" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblRooms">
+        <PropertyRef Name="RoomID" />
+      </Principal>
+      <Dependent Role="tblReservations">
+        <PropertyRef Name="RoomID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Хранилище KingWilliamHotelDBModelContainer">
+    <EntitySet Name="tblGuests" EntityType="Self.tblGuests" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblReservations" EntityType="Self.tblReservations" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblRooms" EntityType="Self.tblRooms" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__tblReserv__Guest__20C1E124" Association="Self.FK__tblReserv__Guest__20C1E124">
+      <End Role="tblGuests" EntitySet="tblGuests" />
+      <End Role="tblReservations" EntitySet="tblReservations" />
+    </AssociationSet>
+    <AssociationSet Name="FK__tblReserv__RoomI__21B6055D" Association="Self.FK__tblReserv__RoomI__21B6055D">
+      <End Role="tblRooms" EntitySet="tblRooms" />
+      <End Role="tblReservations" EntitySet="tblReservations" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
